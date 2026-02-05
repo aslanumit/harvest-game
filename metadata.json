@@ -1,0 +1,5 @@
+{
+  "name": "The Harvest Tournament",
+  "description": "A comprehensive simulation platform for running Axelrod-style Prisoner's Dilemma tournaments. Define custom strategies, configure round counts, and analyze tournament results with AI-powered insights.",
+  "requestFramePermissions": []
+}

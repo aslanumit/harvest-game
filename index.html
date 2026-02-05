@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Harvest - Game Theory Tournament</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --stardew-brown: #5d3a1a;
+            --stardew-tan: #f4d29c;
+            --stardew-wood-light: #b17b4c;
+            --stardew-green: #348e3a;
+            --stardew-yellow: #ffcc00;
+        }
+        body {
+            font-family: 'VT323', monospace;
+            background-color: #74c476; /* Lush grass green */
+            color: #3e2723;
+            margin: 0;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(#ffffff22 1px, transparent 1px),
+                radial-gradient(#ffffff22 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+        h1, h2, h3, button {
+            font-family: 'VT323', monospace; /* Stardew uses a cleaner pixel font, VT323 is closer than Press Start */
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        }
+        .stardew-font-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
