@@ -64,7 +64,7 @@ const ScenicBackground: React.FC<{ bgUrl: string | null }> = ({ bgUrl }) => (
       <img 
         src={bgUrl} 
         alt="Village Background" 
-        className="w-full h-full object-cover pixelated backdrop-blur-sm opacity-40"
+        className="w-full h-full object-cover pixelated backdrop-blur-sm opacity-80"
         onError={(e) => {
           e.currentTarget.style.display = 'none';
         }}
@@ -110,7 +110,7 @@ const RankingCard: React.FC<{ ranking: any; index: number; participants: Partici
       </div>
       <div className="text-right flex-shrink-0 ml-4">
         <div className="text-2xl font-mono font-bold text-[#5d3a1a]">{ranking.totalScore}</div>
-        <div className="text-lg text-amber-800 uppercase">Seeds</div>
+        <div className="text-lg text-amber-800 uppercase">Pounds</div>
       </div>
     </div>
   );
@@ -119,7 +119,7 @@ const RankingCard: React.FC<{ ranking: any; index: number; participants: Partici
 // --- Village Elder Intro Component ---
 
 const IntroPopup: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  const fullText = "Welcome, young neighbor. Our village thrives on trust, but the harvest season tests even the strongest bonds. During each day of the season, you and your neighbor must decide: will you SHARE your tools and seeds for a collective bounty, or HOG them for yourself? If you both SHARE, the village grows strong (+3 each). But if one HOGS while the other SHARES, the selfish one takes all (+5), leaving the kind soul with nothing. If both HOG... well, the fields go dry and everyone barely scrapes by (+1). Choose your neighbors' mindsets carefully... the peace of our valley depends on it!";
+  const fullText = "Welcome, young neighbor. Our village thrives on trust, but the harvest season tests even the strongest bonds. During each day of the season, you and your neighbor must decide: will you SHARE your tools and seeds for a collective bounty, or HOG them for yourself? If you both SHARE, the village grows strong (+3 each). But if one HOGS while the other SHARES, the selfish one takes all (+5), leaving the kind soul with nothing. If both HOG... well, the fields go dry and everyone barely scrapes by (+1). Choose your neighbors' mindsets carefully... the peace of our village depends on it!";
   
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
@@ -562,8 +562,8 @@ export default function App() {
       <div className="relative z-10 w-full">
         <div className="text-center mb-12">
           <div className="inline-block relative">
-            <h1 className="text-9xl font-bold tracking-tight text-[#ffcc00] mb-20 drop-shadow-[4px_4px_0_#5d3a1a]">
-              THE HARVEST TOURNAMENT
+            <h1 className="text-9xl font-bold tracking-tight text-[#ffcc00] mb-10 drop-shadow-[6px_6px_0_#5d3a1a]">
+              THE HARVEST GAME
             </h1>
           </div>
         </div>
@@ -709,7 +709,7 @@ export default function App() {
                 </div>
             )}
             {(isRunning || (!summary && !isSimulating)) && (
-              <div className="h-full min-h-[1440px] flex flex-col bg-[#fdf2e9]/20 border-[4px] border-[#5d3a1a] shadow-inner relative overflow-hidden p-8 animate-in backdrop-blur-[2px]">
+              <div className="h-full min-h-[800px] flex flex-col bg-[#fdf2e9]/20 border-[4px] border-[#5d3a1a] shadow-inner relative overflow-hidden p-8 animate-in backdrop-blur-[4px]">
                 <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#2e7d32 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
                 <div className="relative z-10 w-full h-full flex flex-col">
                   <h2 className="relative z-20 text-3xl text-[#5d3a1a] mb-40 font-bold tracking-tight font-mono uppercase text-center bg-[#f4d29c] inline-block px-6 py-2 border-2 border-[#5d3a1a] mx-auto block w-fit shadow-[4px_4px_0_rgba(0,0,0,0.1)]">Village Square</h2>

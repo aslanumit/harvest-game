@@ -2,6 +2,8 @@
 
 Description to be written.
 
+Artwork inspired by Stardew Valley and AI generated.
+
 ## Run Locally
 
 **Prerequisites:**  Node.js
