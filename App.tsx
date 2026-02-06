@@ -119,12 +119,12 @@ const RankingCard: React.FC<{ ranking: any; index: number; participants: Partici
 // --- Village Elder Intro Component ---
 
 const IntroPopup: React.FC<{ onClose: () => void }> = ({ onClose }) => {
-  const fullText = "Welcome, young neighbor. Our village thrives on trust, but the harvest season tests even the strongest bonds. During each day of the season, you and your neighbor must decide: will you SHARE your tools and seeds for a collective bounty, or HOG them for yourself? If you both SHARE, the village grows strong (+3 each). But if one HOGS while the other SHARES, the selfish one takes all (+5), leaving the kind soul with nothing. If both HOG... well, the fields go dry and everyone barely scrapes by (+1). Choose your neighbors' mindsets carefully... the peace of our village depends on it!";
+  const fullText = "Welcome, young villagers. Our village thrives on trust, but the harvest season tests even the strongest bonds. During each day of the season, you and your neighbor must decide: will you SHARE your tools and seeds for a collective bounty, or HOG them for yourself? If you both SHARE, the village grows strong (+3 each). But if one HOGS while the other SHARES, the selfish one takes all (+5), leaving the kind soul with nothing. If both HOG... well, the fields go dry and everyone barely scrapes by (+1). Choose your strategies' carefully... the prosperity of our village depends on it!";
   
   const [displayedText, setDisplayedText] = useState("");
   const [index, setIndex] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
-  const typingSpeed = 30; // ms per char
+  const typingSpeed = 60; // ms per char
 
   useEffect(() => {
     if (index < fullText.length) {
@@ -177,7 +177,7 @@ const IntroPopup: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   </StardewButton>
                 )}
                 <StardewButton onClick={onClose} variant="success">
-                  I UNDERSTAND. LET'S HARVEST!
+                  LET'S HARVEST!
                 </StardewButton>
               </div>
             </div>
@@ -194,7 +194,7 @@ const SpeechBubble: React.FC<{ move: Move; score: number; side: 'left' | 'right'
   <div className={`absolute top-0 ${side === 'left' ? 'right-full mr-2' : 'left-full ml-2'} z-[70] transition-all duration-500 cubic-bezier(0.175, 0.885, 0.32, 1.275) transform ${isVisible ? 'opacity-100 scale-100 translate-y-0 translate-x-0' : 'opacity-0 scale-50 translate-y-8 ' + (side === 'left' ? 'translate-x-4' : '-translate-x-4')}`}>
     <div className={`relative bg-white text-[#3e2723] p-3 border-[4px] border-[#5d3a1a] min-w-[110px] shadow-[6px_6px_0_rgba(0,0,0,0.15)] ${isVisible ? 'animate-bounce-slow' : ''}`}>
       <div className="text-xs font-black uppercase tracking-widest mb-1 border-b-2 border-gray-100 font-mono flex items-center gap-1 justify-center whitespace-nowrap">
-        {move === 'COOPERATE' ? '🤝 SHARE' : '🐷 HOG'}
+        {move === 'COOPERATE' ? 'SHARE' : 'HOG'}
       </div>
       <div className={`text-2xl font-mono font-black text-center ${score >= 3 ? 'text-green-600' : 'text-red-600'}`}>+{score}</div>
       <div className={`absolute top-6 ${side === 'left' ? '-right-[11px] border-r-[4px] border-t-[4px]' : '-left-[11px] border-l-[4px] border-b-[4px]'} w-5 h-5 bg-white border-[#5d3a1a] rotate-45`}></div>
@@ -527,14 +527,6 @@ export default function App() {
     reader.readAsText(file);
   };
 
-  const handleBackgroundUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const url = URL.createObjectURL(file);
-      setBackgroundUrl(url);
-    }
-  };
-
   const handleBackToSquare = () => {
     setSummary(null);
     setIsLeftPanelOpen(true);
@@ -572,14 +564,14 @@ export default function App() {
           
           <div className={`transition-all duration-500 ease-in-out overflow-hidden flex-shrink-0 ${isLeftPanelOpen ? 'w-full lg:w-[40%] opacity-100' : 'w-0 opacity-0 pointer-events-none'}`}>
             <div className="min-w-[320px] lg:min-w-[480px]">
-              <PixelFrame title="VILLAGER LOGBOOK">
+              <PixelFrame title="">
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-xl uppercase text-amber-900 mb-2 font-bold tracking-widest font-mono">Neighbor Name</label>
+                    <label className="block text-xl uppercase text-amber-900 mb-2 font-bold tracking-widest font-mono">Add Player</label>
                     <input type="text" placeholder="ENTER NAME..." value={newName} onChange={(e) => setNewName(e.target.value.toUpperCase())} className="w-full bg-[#fdf2e9] border-[3px] border-[#5d3a1a] p-4 text-2xl font-mono text-[#3e2723] outline-none focus:bg-white transition-colors uppercase font-bold" />
                   </div>
                   <div>
-                    <label className="block text-xl uppercase text-amber-900 mb-2 font-bold tracking-widest text-center font-mono">Portrait</label>
+                    <label className="block text-xl uppercase text-amber-900 mb-2 font-bold tracking-widest text-center font-mono">Avatar</label>
                     <div className="relative flex items-center justify-center">
                       <button type="button" onClick={() => handleArrowClick('left')} disabled={selectedIndex === 0} className="absolute left-[-20px] z-30 w-12 h-12 bg-[#b17b4c] border-[3px] border-[#5d3a1a] text-white flex items-center justify-center hover:bg-[#8b5a2b] transition-all active:scale-90 disabled:opacity-20 shadow-[0_4px_0_rgba(0,0,0,0.2)]"><span className="text-2xl pointer-events-none">◀</span></button>
                       <div className="w-full relative bg-[#e6c9a3] border-[3px] border-[#5d3a1a] p-2 overflow-hidden shadow-inner">
@@ -604,7 +596,7 @@ export default function App() {
                   </div>
                   <div className="grid grid-cols-1 gap-4">
                     <StardewButton onClick={addParticipant} variant="success">INVITE NEIGHBOR</StardewButton>
-                    {participants.length > 0 && <StardewButton onClick={clearParticipants} variant="danger">CLEAR LOGBOOK 🗑️</StardewButton>}
+                    {participants.length > 0 && <StardewButton onClick={clearParticipants} variant="warning">RESET</StardewButton>}
                   </div>
                 </div>
               </PixelFrame>
@@ -614,14 +606,6 @@ export default function App() {
                     <div className="flex items-center justify-between font-mono">
                         <span className="text-xl uppercase font-bold text-amber-900">Days in Season:</span>
                         <input type="number" value={numRounds} onChange={(e) => setNumRounds(Math.max(1, Number(e.target.value)))} className="bg-[#fdf2e9] border-[3px] border-[#5d3a1a] w-24 p-2 text-center text-2xl font-mono text-[#3e2723] focus:border-green-600 outline-none font-bold" />
-                    </div>
-                    <div className="border-t-2 border-[#5d3a1a] pt-4 pb-2">
-                       <label className="block text-xl uppercase font-bold text-amber-900 mb-2 font-mono">Game Board Map</label>
-                       <div className="flex gap-2">
-                         <StardewButton onClick={() => bgInputRef.current?.click()} variant="primary" className="py-2 text-base w-full">UPLOAD MAP 🗺️</StardewButton>
-                         <input type="file" ref={bgInputRef} onChange={handleBackgroundUpload} accept="image/*" className="hidden" />
-                       </div>
-                       <p className="text-xs text-amber-900 mt-2 font-mono opacity-80">Supported: PNG, JPG, GIF</p>
                     </div>
                     <div className="border-t-2 border-[#5d3a1a] pt-6">
                       <label className="block text-xl uppercase font-bold text-amber-900 mb-6 font-mono">Harvest Payoffs Matrix</label>
@@ -688,15 +672,15 @@ export default function App() {
                     <p className="text-center font-mono text-amber-800 uppercase text-lg italic">No archived villages yet...</p>
                   )}
                   <div className="grid grid-cols-2 gap-2 mt-4 border-t-2 border-[#5d3a1a] pt-4">
-                    <StardewButton onClick={exportArchives} disabled={presets.length === 0} variant="primary" className="py-2 text-base">EXPORT ALL 💾</StardewButton>
-                    <StardewButton onClick={() => fileInputRef.current?.click()} variant="warning" className="py-2 text-base">IMPORT 📂</StardewButton>
+                    <StardewButton onClick={exportArchives} disabled={presets.length === 0} variant="primary" className="py-2 text-base">EXPORT ALL</StardewButton>
+                    <StardewButton onClick={() => fileInputRef.current?.click()} variant="warning" className="py-2 text-base">IMPORT VILLAGE</StardewButton>
                     <input type="file" ref={fileInputRef} onChange={importArchives} accept=".json" className="hidden" />
                   </div>
                 </div>
               </PixelFrame>
 
               <div className="mt-4 pb-12">
-                <StardewButton onClick={clearParticipants} variant="danger" className="w-full text-2xl py-6 flex items-center justify-center gap-4">START NEW GAME 🚜</StardewButton>
+                <StardewButton onClick={clearParticipants} variant="danger" className="w-full text-2xl py-6 flex items-center justify-center gap-4">RESET EVERYTHING</StardewButton>
               </div>
             </div>
           </div>
@@ -709,7 +693,7 @@ export default function App() {
                 </div>
             )}
             {(isRunning || (!summary && !isSimulating)) && (
-              <div className="h-full min-h-[800px] flex flex-col bg-[#fdf2e9]/20 border-[4px] border-[#5d3a1a] shadow-inner relative overflow-hidden p-8 animate-in backdrop-blur-[4px]">
+              <div className="h-full min-h-[866px] flex flex-col bg-[#fdf2e9]/20 border-[4px] border-[#5d3a1a] shadow-inner relative overflow-hidden p-8 animate-in backdrop-blur-[4px]">
                 <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#2e7d32 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
                 <div className="relative z-10 w-full h-full flex flex-col">
                   <h2 className="relative z-20 text-3xl text-[#5d3a1a] mb-40 font-bold tracking-tight font-mono uppercase text-center bg-[#f4d29c] inline-block px-6 py-2 border-2 border-[#5d3a1a] mx-auto block w-fit shadow-[4px_4px_0_rgba(0,0,0,0.1)]">Village Square</h2>
@@ -737,11 +721,12 @@ export default function App() {
                         {participants.length >= 2 && !isRunning && !isSimulating && (
                           <div className="mt-12 mb-8 flex flex-col items-center justify-center z-20">
                             <div className="flex flex-col items-center gap-6 bg-[#fdf2e9]/95 backdrop-blur-sm p-8 border-[4px] border-[#5d3a1a] shadow-[8px_8px_0_rgba(0,0,0,0.2)] animate-in zoom-in duration-300">
+                              <p className="font-mono text-[#5d3a1a] text-lg uppercase font-bold animate-pulse tracking-widest text-center border-b-2 border-[#5d3a1a]/20 pb-4 w-full">Ready for the Tournament?</p>
                               <div className="flex flex-col md:flex-row gap-6 w-full">
-                                <StardewButton onClick={handleSimulateInstant} disabled={isSimulating} variant="primary" className="w-full md:w-auto text-xl py-4 min-w-[240px]">QUICK HARVEST 🌽</StardewButton>
-                                <StardewButton onClick={handleRunAnimated} disabled={isRunning} variant="warning" className="w-full md:w-auto text-xl py-4 min-w-[240px]">WATCH SEASON 🧺</StardewButton>
+                                <StardewButton onClick={handleRunAnimated} disabled={isRunning} variant="warning" className="w-full md:w-auto text-xl py-4 min-w-[240px]">WATCH THE TOURNAMENT</StardewButton>
+                                <StardewButton onClick={handleSimulateInstant} disabled={isSimulating} variant="primary" className="w-full md:w-auto text-xl py-4 min-w-[240px]">SIMULATE</StardewButton>
                               </div>
-                              <p className="font-mono text-[#5d3a1a] text-lg uppercase font-bold animate-pulse tracking-widest text-center border-t-2 border-[#5d3a1a]/20 pt-4 w-full">Ready for the Harvest?</p>
+                              
                             </div>
                           </div>
                         )}
