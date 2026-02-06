@@ -688,7 +688,7 @@ export default function App() {
           <div className="flex-grow w-full">
             {isSimulating && !isRunning && (
                 <div className="h-full min-h-[600px] flex flex-col items-center justify-center bg-[#f4d29c]/90 border-[4px] border-[#5d3a1a] p-12 shadow-lg">
-                    <div className="w-32 h-32 mb-8 animate-spin text-5xl flex items-center justify-center">🥕</div>
+                    <div className="w-32 h-32 mb-8 animate-spin text-5xl flex items-center justify-center">🌀</div>
                     <h2 className="text-3xl text-[#5d3a1a] font-bold animate-pulse uppercase tracking-widest text-center font-mono">SIMULATING ALL THE GAMES...</h2>
                 </div>
             )}
