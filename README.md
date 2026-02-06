@@ -4,6 +4,8 @@ This is a classroom-friendly simulation of Robert Axelrod's Prisoner's Dilemma t
 
 I made this game primarily using Google AI Studio with minor manual changes. The artwork of the game is is inspired by Stardew Valley.
 
+Visit https://harvest-game.netlify.app/ to run the game.
+
 ## How The Simulation Works
 
 Each neighbor (participant) has a strategy with four decision points:
