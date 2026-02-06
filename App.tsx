@@ -227,7 +227,7 @@ const StrategySelect: React.FC<{ label: string; value: Reaction; onChange: (val:
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [isLeftPanelOpen, setIsLeftPanelOpen] = useState(true);
-  const [backgroundUrl, setBackgroundUrl] = useState<string | null>("background.jpg");
+  const [backgroundUrl, setBackgroundUrl] = useState<string | null>("/background.jpg");
   
   const [participants, setParticipants] = useState<Participant[]>(() => {
     const saved = localStorage.getItem('harvest_participants');
